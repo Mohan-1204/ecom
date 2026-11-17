@@ -11,7 +11,7 @@ export default function ProductDetail({
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/product/${id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/product/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("DATA:", data);
@@ -102,7 +102,8 @@ export default function ProductDetail({
               type="button"
               id="cart_btn"
               className="btn btn-primary d-inline ml-4"
-              onClick={addToCart} disabled={product.stock === 0}
+              onClick={addToCart}
+              disabled={product.stock === 0}
             >
               Add to Cart
             </button>
