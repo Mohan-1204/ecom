@@ -41,18 +41,32 @@ export default function Cart({ cartItems, setCartItems }) {
     setCartItems(updatedItems);
   }
 
-  function placeOrder() {
-    fetch(process.env.REACT_APP_API_URL + "/order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cartItems),
-    }).then(() => {
+  async function placeOrder() {
+    try {
+      const response = await fetch(process.env.REACT_APP_API_URL + "/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cartItems),
+      });
+
+      const data = await response.json();
+
+      console.log("ORDER RESPONSE:", data);
+
+      if (!response.ok || !data.success) {
+        toast.error(data.message || "Order placement failed");
+        return;
+      }
+
       setCartItems([]);
       setComplete(true);
       toast.success("Order placed successfully!");
-    });
+    } catch (error) {
+      console.error("ORDER ERROR:", error);
+      toast.error("Unable to place order. Please try again.");
+    }
   }
 
   return cartItems.length > 0 ? (
@@ -155,7 +169,7 @@ export default function Cart({ cartItems, setCartItems }) {
                 onClick={placeOrder}
                 className="btn btn-primary btn-block"
               >
-                Place Order 
+                Place Order
               </button>
             </div>
           </div>
