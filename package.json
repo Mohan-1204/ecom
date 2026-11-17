@@ -1,0 +1,26 @@
+{
+  "name": "mini-ecom-python-mysql-final",
+  "version": "1.0.0",
+  "description": "Full-stack e-commerce application converted to the requested technology stack while preserving the existing React UI and core functionality.",
+  "main": "index.js",
+  "scripts": {
+  "frontend": "npm start --prefix frontend",
+  "backend": "backend\\venv\\Scripts\\python.exe backend\\app.py",
+  "dev": "concurrently -k \"npm run backend\" \"npm run frontend\""
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohan-1204/ecom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mohan-1204/ecom/issues"
+  },
+  "homepage": "https://github.com/Mohan-1204/ecom#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  }
+}
