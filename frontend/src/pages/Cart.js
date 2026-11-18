@@ -43,13 +43,16 @@ export default function Cart({ cartItems, setCartItems }) {
 
   async function placeOrder() {
     try {
-      const response = await fetch(process.env.REACT_APP_API_URL + "/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        process.env.REACT_APP_API_URL + "/api/v1/order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(cartItems),
         },
-        body: JSON.stringify(cartItems),
-      });
+      );
 
       const data = await response.json();
 
