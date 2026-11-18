@@ -1,7 +1,7 @@
 # Mini E-Commerce Platform
 
 Full-stack e-commerce application converted to the requested technology stack while preserving the existing React UI and core functionality.
-
+https://mini-ecom-frontend.onrender.com
 ## Technology Stack
 
 ### Frontend
